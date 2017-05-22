@@ -3,17 +3,10 @@ let env = {
 	NODE_ENV: 'development',///changing this changes everything. devel means it is being built. changes to production when done.
 	PORT: 3000,
 	DBPROTOCOL: 'mongodb',
-<<<<<<< HEAD
-	DBUSERNAME: 'student',//put personal info here
-	DBPASSWORD: 'CodeWorksStudent',
-	DBHOST: 'ds056789.mlab.com:56789',
-	DBNAME: 'codeworks',
-=======
 	DBUSERNAME: 'bananaberry',
 	DBPASSWORD: 'yellowishred',
 	DBHOST: 'ds149431.mlab.com:49431',
 	DBNAME: 'youcankanban',
->>>>>>> 6c1862bbaa645b6ca34dad1a385083df7eb3a53a
 	SERVERNAME: 'dev-server'
 }
 
