@@ -15,6 +15,14 @@ const models = {//models is a dictionary
     name: 'List',
     endpoint: 'lists'
   },
+  task: {
+    name: 'Task',
+    endpoint: 'tasks'
+  },
+  comments: {
+    name: 'Comment',
+    endpoint: 'comments'
+  },
   user: {
     name: 'User',
     endpoint: 'users',
