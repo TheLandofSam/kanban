@@ -1,9 +1,9 @@
 // LOCAL DEV VARIABLES
 let env = {
-	NODE_ENV: 'development',
+	NODE_ENV: 'development',///changing this changes everything. devel means it is being built. changes to production when done.
 	PORT: 3000,
 	DBPROTOCOL: 'mongodb',
-	DBUSERNAME: 'student',
+	DBUSERNAME: 'student',//put personal info here
 	DBPASSWORD: 'CodeWorksStudent',
 	DBHOST: 'ds056789.mlab.com:56789',
 	DBNAME: 'codeworks',
@@ -13,7 +13,7 @@ let env = {
 // MAPS env TO ACTUAL ENVIRONMENT
 Object.keys(env).forEach(v => {
 	process.env[v] = process.env[v] || env[v]
-}) 
+}) ///take above and set on the enviro and create one if its not there???
 
 
 // MongoDb Connection String Builder

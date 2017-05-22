@@ -2,8 +2,8 @@ import { actions } from '../config/constants'
 
 export default API
 
-function API(model, schema) {
-  if (model.preventDefaultApi) { return {} }
+function API(model, schema) {//constructor function...ie it is an object. if you give me a model by name and a schema, I will give you the get, post, put and delete.... 
+  if (model.preventDefaultApi) { return {} }//presentDefaultApi means dont want to use what is below this fx. It tells it to return a new obj.
   return {
     get: get,
     post: create,
@@ -20,7 +20,7 @@ function API(model, schema) {
 
     if (id) {
       schema.findById(id)
-        .populate(query)
+        .populate(query)//mongoose, you give me certian parameters and will collecte it...
         .then(data => {
           return res.send(handleResponse(actions.find, data))
         })
