@@ -17,10 +17,11 @@ export default {
               Comments.findById({taskId: task._id})          
         })
           res.send(handleResponse(action, lists))
-        }).catch(error => {
+        })
+        })
+        .catch(error => {
           return next(handleResponse(action, null, error))
         })
-      }
     }
   }
 }
