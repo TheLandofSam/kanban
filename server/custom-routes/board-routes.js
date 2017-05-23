@@ -5,7 +5,7 @@ let Comments = require('../models/comment')
 
 export default {
   getAll:{
-    path: '/boards/:boardId/Lists',
+    path: '/boards/:boardId/lists/:listId/tasks/:taskId/comments',
     reqType: 'get',
     method(req, res, next){
       let action = 'Get All'
@@ -13,11 +13,14 @@ export default {
         .then(lists => {
           lists.forEach(list=>{
             Tasks.find({listId: list._id})
-          })
+            .then(tasks => {
+              Comments.findById({taskId: task._id})          
+        })
           res.send(handleResponse(action, lists))
         }).catch(error => {
           return next(handleResponse(action, null, error))
         })
+      }
     }
   }
 }
