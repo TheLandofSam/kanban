@@ -9,7 +9,8 @@ const actions = {//these are the actions a user can possibly do..., will registe
 const models = {//models is a dictionary
   board: {
     name: 'Board',
-    endpoint: 'boards'//tells api it will be /boards, instead of /board
+    endpoint: 'boards',//tells api it will be /boards, instead of /board
+    useCustomRoutes: true//tells app to go into the custom routes dir and use the custom route, must use proper naming constrictions. must be called user-routes,sam-routes, sid-routes etc.
   },
   list: {
     name: 'List',
