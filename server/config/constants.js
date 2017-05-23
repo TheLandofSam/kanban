@@ -19,7 +19,7 @@ const models = {//models is a dictionary
     name: 'Task',
     endpoint: 'tasks'
   },
-  comments: {
+  comment: {
     name: 'Comment',
     endpoint: 'comments'
   },
