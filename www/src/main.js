@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 import io from 'socket.io-client'
 import store from './store'
-
+import Reg from './components/register'
+import Login from './components/login'
 
 let socket = io('http://localhost:3000')
 

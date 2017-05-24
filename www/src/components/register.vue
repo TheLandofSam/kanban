@@ -1,15 +1,17 @@
 <template>
-  <div class="reg">
+  <div class="register">
     <div class="container-fluid">
       <div class="row"></div>
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-          <h2>login</h2>
-          <input class="text" placeholder="name">
-          <input class="email"  placeholder="email">
-          <input class="password" placeholder="set password">
-          <button @click="">submit!</button>
+          <h2>Register</h2>
+          <form @submit.prevent="register">
+            <input type="text" placeholder="name" v-model="user.name" required>
+            <input type="email"  placeholder="email" v-model="user.email" required>
+            <input type="password" placeholder="set password" v-model="user.password" required>
+            <button type="submit">submit!</button>
+          </form>
         </div>
         <div class="col-md-3"></div>
       </div>
@@ -22,12 +24,18 @@
 
 <script>
 export default {
-  name: "reg',
+  name: 'register',
   data(){
-
+    return{
+      user: {}
+    }
   },
   computed:{},
-  methods:{},
+  methods:{
+      register(){
+        this.$root.store.actions.register(this.user)
+      }
+  },
   components:{}
 }
 </script>

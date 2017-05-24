@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
@@ -22,6 +23,12 @@ export default {
   state,
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
   actions: {
+    register(user){
+      axios.post('//localhost:3000/register', user).then(res =>{
+        console.log(res)
+        router.push('/boards')
+      })
+    },
     getBoards() {
       api('boards')
         .then(res => {
