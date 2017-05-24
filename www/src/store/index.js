@@ -23,6 +23,14 @@ export default {
   state,
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
   actions: {
+    login(user){
+      axios.post('//localhost:3000/login', user).then(res =>{
+        console.log(res)
+        router.push('/boards')
+        //needs to authenticate whether this person is legit and then if not reroute to register, 
+        //or invalid username or password
+      })
+    },
     register(user){
       axios.post('//localhost:3000/register', user).then(res =>{
         console.log(res)

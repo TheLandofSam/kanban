@@ -9,7 +9,11 @@
             <h1>Welcome</h1><h1>to bananaBerry</h1>
           </div>
           <div class="row">
-            <input type="text" placeholder="user name"><input type="password" placeholder="password"><button @click="">login</button>
+          <form @submit.prevent="login">
+            <input type="text" v-model="user.name" required placeholder="user name">
+            <input type="password" v-model="user.password" require placeholder="password">
+            <button type="submit">login</button>
+          </form>
           </div>
           <div class="row">
             <h5>... register here!</h5> <!--if we use a berry in the logo, we can use a berry as a submit button, otherwise this will be hyper text-->
@@ -31,11 +35,15 @@ export default {
   name: 'login',
   data(){
     return {
-
+      user: {}
     }
   },
   computed:{},
-  methods:{},
+  methods:{
+    login(){
+      this.$root.store.actions.login(this.user)
+    }
+  },
   components:{}
 }
 </script>

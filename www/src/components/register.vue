@@ -7,9 +7,9 @@
         <div class="col-md-6">
           <h2>Register</h2>
           <form @submit.prevent="register">
-            <input type="text" placeholder="name" v-model="user.name" required>
-            <input type="email"  placeholder="email" v-model="user.email" required>
-            <input type="password" placeholder="set password" v-model="user.password" required>
+            <input type="text" v-model="user.name" required placeholder="name">
+            <input type="email" v-model="user.email" required placeholder="email">
+            <input type="password" v-model="user.password" required placeholder="set password">
             <button type="submit">submit!</button>
           </form>
         </div>
