@@ -51,8 +51,8 @@ export default {
       Lists.findById(req.params.listId) 
         .then(list => { 
           Tasks.find({listId: req.params.listId})
-          .then(lists=>{
-            lists.tasks = tasks
+          .then(tasks=>{
+            list.tasks = tasks
               res.send(handleResponse(action, list))
           }).catch(error => {
           return next(handleResponse(action, null, error))
