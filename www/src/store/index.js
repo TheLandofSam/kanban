@@ -36,6 +36,7 @@ export default {
         console.log(res)
         router.push('/boards')
       })
+      .catch(handleError)
     },
     getBoards() {
       api('boards')
