@@ -45,6 +45,7 @@ export default {
         state.user = res.data
         router.push('/boards')
       })
+      .catch(handleError)
     },
     getAuth(){
       auth('authenticate')
