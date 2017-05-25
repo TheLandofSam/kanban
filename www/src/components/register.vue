@@ -27,9 +27,11 @@ export default {
   name: 'register',
   data(){
     return{
+      user: {
       name: "",
       email: '',
       password: ''
+      }
     }
   },
   computed:{},
