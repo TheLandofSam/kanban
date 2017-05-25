@@ -2,6 +2,7 @@
   <div> 
     <div class="custom-error" v-if="error.message" @click="clearError">
       Error: {{error.message}}
+    </div>
   </div>
 </template>
 

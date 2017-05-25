@@ -34,7 +34,7 @@
 export default {
   name: 'login',
   data(){
-    return 
+    return {
       email: "",
       password: "",
     }
@@ -42,7 +42,7 @@ export default {
   computed:{},
   methods:{
     login(){
-      this.$root.$data.store.actions.login(email: this.email, password: this.password)
+      this.$root.$data.store.actions.login({email: this.email, password: this.password})
     }
   },
   components:{}
