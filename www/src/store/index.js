@@ -90,6 +90,34 @@ export default {
           this.getBoards()
         })
         .catch(handleError)
+    },
+    // getLists() {
+    //   api('lists')//boards or user boards?
+    //     .then(res => {
+    //       state.boards = res.data.data
+    //     })
+    //     .catch(handleError)
+    // },
+    getLists(id) {
+      api('boards/' + id + '/lists')
+        .then(res => {
+          state.activeBoard.lists = res.data.data
+        })
+        .catch(handleError)
+    },
+    createList(list) {
+      api.post('lists/',list) ///do we need the / after boards?
+        .then(res => {
+          this.getBoards()
+        })
+        .catch(handleError)
+    },
+    removeList(list) {
+      api.delete('lists/'+list._id)
+        .then(res => {
+          this.getLists()
+        })
+        .catch(handleError)
     }
   }
 

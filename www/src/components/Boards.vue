@@ -40,7 +40,10 @@ export default {
     },
     user(){ ///if we want to say 'Hello{{user.name}}, we need to figure out this user call...
       return this.$root.$data.store.state.user
-    }
+    },
+    // tacos(){
+    //   return 'Kyle likes tacos'
+    // }
   },
   methods:{
     toggle(){
