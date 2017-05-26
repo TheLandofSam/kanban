@@ -30,7 +30,7 @@ export default {
       return this.$root.$data.store.state.activeBoard
       },
     lists(){
-      return this.$root.$data.store.state.activeBoard.lists
+      return this.$root.$data.store.state.activeLists
     }
   },
   components: {
