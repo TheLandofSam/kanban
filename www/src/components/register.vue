@@ -27,21 +27,13 @@ export default {
   name: 'register',
   data(){
     return{
-      user: {
-      name: "",
-      email: '',
-      password: ''
-      }
+      user: {}
     }
   },
   computed:{},
   methods:{
       register(){
-        this.$root.store.actions.register({
-          name: this.name,
-          email: this.email,
-          password: this.password
-        }) //pass an obj? name: this.name... ??
+        this.$root.store.actions.register(this.user) //pass an obj? name: this.name... ??
       }
   },
   components:{}

@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import login from './login'
 export default {
   name: 'boards',
   mounted(){

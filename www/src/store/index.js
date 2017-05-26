@@ -29,15 +29,18 @@ export default {
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
   actions: {
     login(user){
-      auth.post('login', user).then(res =>{
+      auth.post('login', user)
+      .then(res =>{
         console.log(res)
+        router.push('/boards')
+      })
         .catch(handleError)
         //needs to authenticate whether this person is legit and then if not reroute to register, 
         // or invalid username or password
-      })
     },
     register(user){
-      auth.post('register', user).then(res =>{
+      auth.post('register', user)
+      .then(res =>{
         console.log(res)
         if(res.data.error){
           return handleError(res.data.error)
@@ -60,7 +63,7 @@ export default {
       state.error = {}
     },
     getBoards() {
-      api('boards')
+      api('boards')//boards or user boards?
         .then(res => {
           state.boards = res.data.data
         })
@@ -74,7 +77,7 @@ export default {
         .catch(handleError)
     },
     createBoard(board) {
-      api.post('boards/',board)
+      api.post('boards/',board) ///do we need the / after boards?
         .then(res => {
           this.getBoards()
         })

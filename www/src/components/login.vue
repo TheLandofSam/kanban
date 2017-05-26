@@ -6,11 +6,11 @@
         <div class="col-md-8">
           <div class="row"></div>
           <div class="row">
-            <h1 class="pacifico">Welcome to</h1><h1 class="ubuntu">banana<img src="http://i44.photobucket.com/albums/f3/suhmantha/bananaBerry_zpsvlwxtdfd.png" alt="Berry"></h1>
+            <h1 class="pacifico">Welcome to</h1><h1 class="ubuntu">banana<img src="http://i44.photobucket.com/albums/f3/suhmantha/bananaBerry_zps9iycff8c.png?t=1495668108" alt="Berry"></h1>
           </div>
           <div class="row">
           <form @submit.prevent="login">
-            <input type="text" v-model="user.name" required placeholder="user name">
+            <input type="text" v-model="user.email" required placeholder="user email">
             <input type="password" v-model="user.password" require placeholder="password">
             <button type="submit">login</button>
           </form>
@@ -35,16 +35,13 @@ export default {
   name: 'login',
   data(){
     return {
-      user: {
-      name: "",
-      password: "",
-      }
+      user: {}
     }
   },
   computed:{},
   methods:{
     login(){
-      this.$root.$data.store.actions.login({name: this.name, password: this.password})
+      this.$root.store.actions.login(this.user)
     }
   },
   components:{}
