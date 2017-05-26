@@ -1,7 +1,7 @@
 <template>
   <div class='board'> 
     {{board.name}}
-    <List v-for='list in lists' :list='list'></List><!--this draws a list component for
+    <List v-for='list in lists' :list='list'><!--<span @click="removeList(list)">x</span>--></List><!--this draws a list component for
     every list item in the list array-->
     <div>
       <form @submit.prevent="createList">
