@@ -15,6 +15,9 @@ export default {
     Error,
     Register,
     Login
+  },
+  mounted(){ //mounted means when this fx gets put on the page run this....
+    this.$root.$data.store.actions.getAuth()
   }
 }
 </script>

@@ -13,7 +13,7 @@ let auth = axios.create({
 })
 // REGISTER ALL DATA HERE 
 let state = {
-  boards: [{}],
+  boards: [],
   activeBoard: {},
   error: {},
   user: {}
@@ -32,6 +32,7 @@ export default {
       auth.post('login', user)
       .then(res =>{
         console.log(res)
+        state.user = res.data.data || {}
         router.push('/boards')
       })
         .catch(handleError)
@@ -45,7 +46,7 @@ export default {
         if(res.data.error){
           return handleError(res.data.error)
         }
-        state.user = res.data
+        state.user = res.data.data || {}
         router.push('/boards')
       })
       .catch(handleError)
@@ -53,7 +54,7 @@ export default {
     getAuth(){
       auth('authenticate')
         .then(res =>{
-          state.user = res.data.data
+          state.user = res.data.data || {}
           router.push('/boards')
         })
         .catch((err =>{
