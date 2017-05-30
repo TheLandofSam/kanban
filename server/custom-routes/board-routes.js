@@ -34,7 +34,7 @@ export default {
           Lists.find({boardId: req.params.boardId})
           .then(lists=>{
             board.lists = lists//need to fix schema!!
-              res.send(handleResponse(action, board))
+              res.send(handleResponse(action, lists))
           }).catch(error => {
           return next(handleResponse(action, null, error))
         })
@@ -53,7 +53,7 @@ export default {
           Tasks.find({listId: req.params.listId})
           .then(tasks=>{
             list.tasks = tasks
-              res.send(handleResponse(action, list))
+              res.send(handleResponse(action, tasks))
           }).catch(error => {
           return next(handleResponse(action, null, error))
         })
@@ -72,7 +72,7 @@ export default {
         Comments.find({taskId: req.params.taskId})
           .then(comments => {
             task.comments = comments
-              res.send(handleResponse(action, task))
+              res.send(handleResponse(action, comments))
           }).catch(error => {
           return next(handleResponse(action, null, error))
           })
