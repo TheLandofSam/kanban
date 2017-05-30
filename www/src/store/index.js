@@ -101,7 +101,7 @@ export default {
     getLists(id) {
       api('boards/' + id + '/lists')
         .then(res => {
-          state.activeBoard.lists = res.data.data
+          state.activeLists = res.data.data
         })
         .catch(handleError)
     },

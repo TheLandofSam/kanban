@@ -33,6 +33,7 @@ export default {
         .then(board => { //same as .then(function(board)){
           Lists.find({boardId: req.params.boardId})
           .then(lists=>{
+            console.log("lists: " + lists)
             board.lists = lists//need to fix schema!!
               res.send(handleResponse(action, lists))
           }).catch(error => {
