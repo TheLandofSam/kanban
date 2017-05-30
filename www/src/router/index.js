@@ -18,11 +18,18 @@ export default new Router({
       path: '/boards/:id',
       name: 'Board',
       component: Board
-    },{
-      path: '/list',
-      nmae: 'List',
-      component: List
-    },{
+    },
+    // {
+    //   path: '/boards/:id/lists/:id',
+    //   nmae: 'List',
+    //   component: List
+    // },{
+    //   path: '/boards/:id/lists/:id/tasks',
+    //   nmae: 'Tasks',
+    //   component: Tasks
+    // },
+    
+    {
       path: '/',
       name: 'Login',
       component: Login

@@ -16,6 +16,7 @@ let state = {
   boards: [],
   activeBoard: {},
   activeLists: [],
+  activeTasks: {},
   error: {},
   user: {}
 }
@@ -92,10 +93,11 @@ export default {
         })
         .catch(handleError)
     },
-    // getLists() {
-    //   api('lists')//boards or user boards?
+    // getTasks(id, id) {
+    //  state.activeTasks = {} //this might need to be an array, but I think it needs to be                             an obj...like it is in the state...the state definately                                 needs to be an obj b/c it needs to stay with the parent                                 list...., also the two ids being passed in are the board                                and list ids...
+    //   api('boards/' + id + '/lists' + id + /tasks)
     //     .then(res => {
-    //       state.boards = res.data.data
+    //       state.activeTasks = res.data.data
     //     })
     //     .catch(handleError)
     // },
@@ -108,7 +110,7 @@ export default {
         .catch(handleError)
     },
     createList(list) {
-      api.post('lists/',list) ///do we need the / after boards?
+      api.post('lists/',list)
         .then(res => {
           debugger
           this.getLists(list.boardId)

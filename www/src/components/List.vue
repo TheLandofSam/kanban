@@ -1,17 +1,20 @@
 <template>
   <div class="list"> 
+    
     <div class="well">
-     <router-link :to="'/list'+list._id">{{list.name}}</router-link><a @click="removeList(list)">     x</a>
+    {{list.name}}<a @click="removeList(list)">     x</a>
+      <Task class="well" v-for="task in tasks"></Task><!--"in tasks" will actualy be something like tasks[list.id], so it only pulls the tasks associated with that specific board -->
     </div>
+  
   </div>
 </template>
 
 <script>
 export default {
   name: 'list',
-  // mounted(){
-  //   this.$root.$data.store.actions.getList(this.$route.params.id)
-  // },
+  mounted(){
+    this.$root.$data.store.actions.getTasks(this.$route.params.id,/*we need to pass in the list id here*/)
+  },
   // computed:{
   //   list(){
   //     return this.$root.$data.store.state.activeList
@@ -24,6 +27,7 @@ export default {
 <style scoped>
 
 </style>
+<!-- I did this then had to pull it, but we might be able to use parts of this later so I stuck it here... -->
 <!--mounted(){
    //this.$root.$data.store.actions.getList(this.$route.params.id)
    //this.$root.$data.store.actions.getTasks(this.$route.params.id)

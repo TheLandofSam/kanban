@@ -8,10 +8,17 @@
           every list item in the list array-->
       </div>
       <div class="col-md-4">
-        <form @submit.prevent="createList">
-            <input type="text" v-model="name" required placeholder="title of new list...">
-            <button type="submit">+</button>
-        </form>
+        <div class="row">
+          <div class="col-md-12 boxA">
+            <form @submit.prevent="createList">
+                <input type="text" v-model="name" required placeholder="title of new list...">
+                <button type="submit">+</button>
+            </form>
+          </div>
+          <div class="col-md-12 boxB">
+            <button type="button"><router-link :to="'/boards/'">go back to boards list...</router-link></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -60,5 +67,11 @@ export default {
 </script>
 
 <style scoped>
+.boxA{
+  min-height: 60px
+}
 
+.boxB{
+  min-height: 60px
+}
 </style>
