@@ -15,6 +15,7 @@ let auth = axios.create({
 let state = {
   boards: [],
   activeBoard: {},
+  activeLists: [],
   error: {},
   user: {}
 }
@@ -99,6 +100,7 @@ export default {
     //     .catch(handleError)
     // },
     getLists(id) {
+      state.activeLists = []
       api('boards/' + id + '/lists')
         .then(res => {
           state.activeLists = res.data.data
@@ -108,7 +110,8 @@ export default {
     createList(list) {
       api.post('lists/',list) ///do we need the / after boards?
         .then(res => {
-          this.getBoards()
+          debugger
+          this.getLists(list.boardId)
         })
         .catch(handleError)
     },
