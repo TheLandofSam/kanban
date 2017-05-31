@@ -93,14 +93,14 @@ export default {
         })
         .catch(handleError)
     },
-    // getTasks(id, id) {
-    //  state.activeTasks = {} //this might need to be an array, but I think it needs to be                             an obj...like it is in the state...the state definately                                 needs to be an obj b/c it needs to stay with the parent                                 list...., also the two ids being passed in are the board                                and list ids...
-    //   api('boards/' + id + '/lists' + id + /tasks)
-    //     .then(res => {
-    //       state.activeTasks = res.data.data
-    //     })
-    //     .catch(handleError)
-    // },
+    getTasks(id, id) {//is this second id necessary?
+     state.activeTasks = {} //this might need to be an array, but I think it needs to be                             an obj...like it is in the state...the state definately                                 needs to be an obj b/c it needs to stay with the parent                                 list...., also the two ids being passed in are the board                                and list ids...
+      api('boards/' + id + '/lists' + id + '/tasks')
+        .then(res => {
+          state.activeTasks = res.data.data
+        })
+        .catch(handleError)
+    },
     getLists(id) {
       state.activeLists = []
       api('boards/' + id + '/lists')
@@ -109,6 +109,13 @@ export default {
         })
         .catch(handleError)
     },
+    createTask(task){
+      api.post('tasks/', task)
+        .then(res => {
+          this.getTasks(task.listId)
+        })
+        .catch(handleError)
+    },  
     createList(list) {
       api.post('lists/',list)
         .then(res => {
@@ -123,6 +130,13 @@ export default {
           this.getLists()
         })
         .catch(handleError)
+    },
+    removeTask(task){
+      api.delete('tasks/'+task._id)
+        .then(res => {
+          this.getTasks()
+        })
+        .catch(handeError)
     }
   }
 
