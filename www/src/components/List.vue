@@ -25,11 +25,11 @@
     computed: {
       list() {
         return this.$root.$data.store.state.activeList
-      }
-  tasks() {
+      },
+      tasks() {
         return this.$root.$data.store.state.activeTasks
-      }
-  props: ['list']//this is not on board.vue, is it needed?
+      },
+  props: ['list'],//this is not on board.vue, is it needed?
   components: {
         Task,
       },
@@ -47,29 +47,27 @@
 
       }
     }
+  }
 
 </script>
 
 <style scoped>
 
 </style>
-<!-- I did this then had to pull it, but we might be able to use parts of this later so I stuck it here... -->
-<!--mounted(){
-   //this.$root.$data.store.actions.getList(this.$route.params.id)
-   //this.$root.$data.store.actions.getTasks(this.$route.params.id)
-  },
-  computed:{
-  //list(){
-   //return this.$root.$data.store.state.activeList
-  //}
-  //props: [ 'list' ]
-  },
-  components: {
-    //Tasks
-  },
-  methods: {
-    removeList(list){
-      this.$root.$data.store.actions.removeList(list)
-    }
-
-  }, -->
+// <!-- I did this then had to pull it, but we might be able to use parts of this later so I stuck it here... -->
+// <!--mounted(){
+//    //this.$root.$data.store.actions.getList(this.$route.params.id)
+//    //this.$root.$data.store.actions.getTasks(this.$route.params.id)
+//   },
+//   computed:{
+//   //list(){
+//    //return this.$root.$data.store.state.activeList
+//   //}
+//   //props: [ 'list' ]
+//   },
+//   components: {
+//     //Tasks
+//   },
+//   methods: {
+//     removeList(list){
+//       this.$root.$data.store.actions.removeList(list)
