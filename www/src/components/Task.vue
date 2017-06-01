@@ -1,6 +1,6 @@
 <template>
   <div class="component">
-    {{task.name}}
+    {{task.name}}<button @click="removeTask(task)">delete task</button>
 
   </div>
 </template>
@@ -11,7 +11,11 @@ export default {
   name: 'component',
   props:['task'],
   computed:{},
-  methods:{},
+  methods:{
+    removeTask(task) {
+          this.$store.dispatch('removeTask', task)
+        }
+  },
   components:{}
 }
 </script>

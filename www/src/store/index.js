@@ -165,9 +165,9 @@ export default new Vuex.Store({
     removeTask({ commit, dispatch }, task) {
       api.delete('tasks/' + task._id)
         .then(res => {
-          dispatch('getTasks')//was this.getTasks()
+          dispatch('getTasks', task)//was this.getTasks()
         })
-        .catch(handeError)
+        .catch(handleError)
     }
   }
 

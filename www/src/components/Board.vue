@@ -3,6 +3,7 @@
     <div class="container">
       <div class="row">
         <h2>{{board.name}}</h2>
+        <h5><button type="button"><router-link :to="'/boards/'">go back to boards list...</router-link></button></h5>
         <List class='col-md-3 boxA' v-for='list in lists' :list='list'></List>
         <!--this draws a list component for
           every list item in the list array-->
@@ -11,7 +12,7 @@
             <input type="text" v-model="name" required placeholder="title of new list...">
             <button type="submit">+</button>
           </form>
-          <button type="button"><router-link :to="'/boards/'">go back to boards list...</router-link></button>
+          
         </div>
       </div>
     </div>

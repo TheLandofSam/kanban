@@ -10,8 +10,8 @@
               <form @submit.prevent="createTask">
                 <input type="text" v-model="name" required placeholder="task name">
                 <button type="submit">+</button>
-                <router-link :to="'/boards/'+list.boardId + '/lists/' +list._id">cancel</router-link>
-                <button @click="removeTask()">delete task</button>
+                
+                
               </form>
             </div>
           </div>
@@ -53,11 +53,8 @@ import Task from './task'
             listId: this.list._id
           })
           this.name = ''
-        },
-        removeTask(task) {
-          this.$store.dispatch('removeTask', task)
         }
-
+        
       }
     }
   
