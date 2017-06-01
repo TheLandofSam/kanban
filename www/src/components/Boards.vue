@@ -37,14 +37,14 @@ export default {
     }
   },
   mounted(){
-    this.$root.$data.store.actions.getBoards()
+    this.$store.dispatch('getBoards')
   },
   computed:{
     boards(){
-      return this.$root.$data.store.state.boards
+      return this.$store.state.boards
     },
     user(){ 
-      return this.$root.$data.store.state.user
+      return this.$store.state.user
     },
     
   },
@@ -53,10 +53,10 @@ export default {
       this.boardForm = true
     },
     createBoard(){
-      this.$root.$data.store.actions.createBoard({
+      this.$store.dispatch('createBoard', {
         name: this.name,
         description: this.description
-              })
+              })////what about the rest???
       this.boardForm = false
       this.name = ''
       this.description = ''
@@ -67,7 +67,7 @@ export default {
     },
 
     removeBoard(board){
-      this.$root.$data.store.actions.removeBoard(board)
+      this.$store.dispatch('removeBoard', board)
     }
   }
 }

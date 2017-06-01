@@ -33,7 +33,7 @@ export default {
   computed:{},
   methods:{
       register(){
-        this.$root.store.actions.register(this.user) //pass an obj? name: this.name... ??
+        this.$store.dispatch('register', this.user) //pass an obj? name: this.name... ??
       }
   },
   components:{}

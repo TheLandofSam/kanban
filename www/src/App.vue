@@ -17,7 +17,7 @@ export default {
     Login
   },
   mounted(){ //mounted means when this fx gets put on the page run this....
-    this.$root.$data.store.actions.getAuth()
+    this.$store.dispatch('getAuth')
   }
 }
 </script>

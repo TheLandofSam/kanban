@@ -1,61 +1,74 @@
 <template>
   <div class="list">
+    
+          <div class="well">
+            {{list.name}}<a @click="removeList(list)">     x</a>
+            <Task class="well" v-for="task in tasks" :task="task"></Task>
+            <!--"in tasks" will actualy be something like tasks[list.id], so it only pulls the tasks associated with that specific board -->
+          
+            <div>
+              <form @submit.prevent="createTask">
+                <input type="text" v-model="name" required placeholder="task name">
+                <button type="submit">+</button>
+                <router-link :to="'/boards/'+list.boardId + '/lists/' +list._id">cancel</router-link>
+                <button @click="removeTask()">delete task</button>
+              </form>
+            </div>
+          </div>
 
-    <div class="well">
-      {{list.name}}<a @click="removeList(list)">     x</a>
-      <Task class="well" v-for="task in tasks" :task="task"></Task>
-      <!--"in tasks" will actualy be something like tasks[list.id], so it only pulls the tasks associated with that specific board -->
-    </div>
-    <div v-if="taskForm">
-      <form @submit.prevent="createTask">
-        <input type="text" v-model="name" required placeholder="task name">
-        <button type="submit">+</button>
-        <button type="button" @click="">x</button>
-      </form>
-    </div>
+
   </div>
 </template>
 
 <script>
+import Task from './task'
   export default {
     name: 'list',
+    data(){
+      return {
+        name: ''
+      }
+    },
     mounted() {
-      this.$root.$data.store.actions.getTasks(this.$route.params.id,/*we need to pass in the list id here*/)
+      console.log('mounting: ', this.list._id)
+      this.$store.dispatch('getTasks', {
+        boardId: this.$route.params.id, 
+        listId: this.list._id})
     },
     computed: {
-      list() {
-        return this.$root.$data.store.state.activeList
-      },
       tasks() {
-        return this.$root.$data.store.state.activeTasks
-      },
-  props: ['list'],//this is not on board.vue, is it needed?
-  components: {
-        Task,
+        return this.$store.state.activeTasks[this.list._id]
+        //array of tasks where the active list is the same as this listid
+      }
+    },
+     props: ['list'],//this is not on board.vue, is it needed?
+     components: {
+            Task,
       },
       methods: {
         createTask() {
-          this.$root.$data.store.actions.createTask({
+          this.$store.dispatch('createTask', {
             name: this.name,
-            listId: this.$route.params.id
+            boardId: this.$route.params.id,
+            listId: this.list._id
           })
           this.name = ''
         },
         removeTask(task) {
-          this.$root.$data.store.actions.removeTask(task)
+          this.$store.dispatch('removeTask', task)
         }
 
       }
     }
-  }
+  
 
 </script>
 
 <style scoped>
 
 </style>
-// <!-- I did this then had to pull it, but we might be able to use parts of this later so I stuck it here... -->
-// <!--mounted(){
+ <!-- I did this then had to pull it, but we might be able to use parts of this later so I stuck it here... -->
+ <!--mounted(){
 //    //this.$root.$data.store.actions.getList(this.$route.params.id)
 //    //this.$root.$data.store.actions.getTasks(this.$route.params.id)
 //   },
@@ -66,7 +79,7 @@
 //   //props: [ 'list' ]
 //   },
 //   components: {
-//     //Tasks
+//     //tasks
 //   },
 //   methods: {
 //     removeList(list){

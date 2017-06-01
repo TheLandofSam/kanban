@@ -41,7 +41,7 @@ export default {
   computed:{},
   methods:{
     login(){
-      this.$root.store.actions.login(this.user)
+      this.$store.dispatch('login', this.user)
     }
   },
   components:{}
