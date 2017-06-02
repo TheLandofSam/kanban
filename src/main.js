@@ -8,7 +8,7 @@ import store from './store'
 import Reg from './components/register'
 import Login from './components/login'
 
-let socket = io('http://localhost:3000')
+let socket = io('https://youcankanban.herokuapp.com')
 
 socket.on('CONNECTED', function (data) {
   console.log(data)
