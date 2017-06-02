@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 .DS_Store
 node_modules/
 dist/
 npm-debug.log
 test/unit/coverage
+=======
+node_modules
+>>>>>>> 12b03eaffde745d9505d203c2e04d132491c3676
