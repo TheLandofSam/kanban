@@ -186,7 +186,7 @@ export default new Vuex.Store({
       api('boards/' + data.boardId + '/lists/' + data.listId + '/tasks/' + data.taskId + '/comments')
         .then(res => {
 
-        var commentData = {listId: data.listId, tasks: res.data.data}///fix this!!
+          var commentData = {taskId: data.taskId, comments: res.data.data}///fix this!!
          
           commit('setComments', commentData)//state.activeLists = res.data.data
         })
