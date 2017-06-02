@@ -1,6 +1,6 @@
 <template>
   <div class="comment">
-    {{comment.name}}  <button @click="removeComment(comment)"> - </button>
+    {{comment.name}}<button @click="removeComment(comment)"> - </button>
 
   </div>
 </template>
@@ -14,9 +14,8 @@ export default {
       name: ''
     }
   },
-  computed:{
-    
-  },
+  computed:{},
+  prop: ['comment'],
   methods:{
     removeComment(comment){
       this.$store.dispatch('removeComment', comment)

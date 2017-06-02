@@ -150,7 +150,7 @@ export default new Vuex.Store({
           console.log(data.listId)
 
           var payload = {listId: data.listId, tasks: res.data.data}
-          debugger
+          
           commit('setListTasks', payload)// res.data.data.forEach(task=>{
           //   state.activeTasks.push(task)
           // })
@@ -185,7 +185,10 @@ export default new Vuex.Store({
     getComments({commit, dispatch}, data) {
       api('boards/' + data.boardId + '/lists/' + data.listId + '/tasks/' + data.taskId + '/comments')
         .then(res => {
-          commit('setComments', res.data.data)//state.activeLists = res.data.data
+
+        var commentData = {listId: data.listId, tasks: res.data.data}///fix this!!
+         
+          commit('setComments', commentData)//state.activeLists = res.data.data
         })
         .catch(handleError)
     },
