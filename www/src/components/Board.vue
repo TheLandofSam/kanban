@@ -30,9 +30,9 @@
     },
     mounted() {
       this.$store.dispatch('getBoard', {
-        BoardId :this.$route.params.id})
+        boardId :this.$route.params.id})
       this.$store.dispatch('getLists', {
-        BoardId :this.$route.params.id})
+        boardId :this.$route.params.id})
 
     },
     computed: {

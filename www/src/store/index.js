@@ -97,7 +97,7 @@ export default new Vuex.Store({
         .catch(handleError)
     },
     getBoard({ commit, dispatch }, id) {
-      api('boards/' + id.BoardId)
+      api('boards/' + id.boardId)
         .then(res => {
           commit('setActiveBoard', res.data.data)//was state.activeBoard = res.data.data
         })
@@ -133,7 +133,7 @@ export default new Vuex.Store({
     },
     getLists({ commit, dispatch }, id) {
       // state.activeLists = []
-      api('boards/' + id.BoardId + '/lists')
+      api('boards/' + id.boardId + '/lists')
         .then(res => {
           commit('setActiveLists', res.data.data)//state.activeLists = res.data.data
         })
