@@ -64,20 +64,4 @@ import Task from './task'
 <style scoped>
 
 </style>
- <!-- I did this then had to pull it, but we might be able to use parts of this later so I stuck it here... -->
- <!--mounted(){
-//    //this.$root.$data.store.actions.getList(this.$route.params.id)
-//    //this.$root.$data.store.actions.getTasks(this.$route.params.id)
-//   },
-//   computed:{
-//   //list(){
-//    //return this.$root.$data.store.state.activeList
-//   //}
-//   //props: [ 'list' ]
-//   },
-//   components: {
-//     //tasks
-//   },
-//   methods: {
-//     removeList(list){
-//       this.$root.$data.store.actions.removeList(list)
+
