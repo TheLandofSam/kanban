@@ -22,7 +22,14 @@
         </div>
         <div class="col-md-2"></div>
       </div>
-      <div class="row bottom"></div>
+      <div class="row bottom bumper"></div>
+      <div class="row bottom">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <h4>bananaBerry is a simple Kanban board application that allows you visually plan and organize projects.</h4>
+          <div class="col-md-3"></div>
+      </div>
+      </div>
     </div>
 
   </div>
@@ -76,8 +83,16 @@ span{
 }
 
 .topborder{
-   background-color: #2f415e;
+  background-color: #2f415e;
   min-height: 80px
+}
+
+.bumper{
+  min-height: 40px
+}
+
+h4{
+  color: #ffe135
 }
 
 </style>
