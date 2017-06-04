@@ -1,6 +1,7 @@
 <template>
   <div class="login">
     <div class="container-fluid">
+      <div class="row topborder"></div>
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -17,13 +18,11 @@
           </div>
           <div class="row">
             <h5>don't have an account?... register <router-link to='/register'>here</router-link>!</h5> <!--if we use a berry in the logo, we can use a berry as a submit button, otherwise this will be hyper text-->
-          <div class="row"></div>
           </div>
-        
-       
         </div>
         <div class="col-md-2"></div>
       </div>
+      <div class="row bottom"></div>
     </div>
 
   </div>
@@ -69,6 +68,16 @@ img{
 span{
   max-height: 20px;
   
+}
+
+.bottom{
+  background-color: #2f415e;
+  min-height: 800px
+}
+
+.topborder{
+   background-color: #2f415e;
+  min-height: 80px
 }
 
 </style>

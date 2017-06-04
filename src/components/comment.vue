@@ -1,7 +1,6 @@
 <template>
   <div class="comment">
-    {{comment.name}}  <button @click="removeComment(comment)"> - </button>
-
+    {{comment.name}}    <a @click="removeComment(comment)"><i class="glyphicon glyphicon-trash"></i></a>
   </div>
 </template>
 
@@ -9,11 +8,7 @@
 <script>
 export default {
   name: 'comment',
-  data(){
-    return {
-      name: ''
-    }
-  },
+  props: ['comment'],
   computed:{
     
   },
@@ -29,5 +24,7 @@ export default {
 
 
 <style scoped>
-
+.comment{
+  background: #a5adba;
+}
 </style>

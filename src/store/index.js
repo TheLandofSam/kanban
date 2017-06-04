@@ -41,7 +41,7 @@ export default new Vuex.Store({
       state.activeBoard = activeBoard
     },
     setUser(state, user) {
-      state.user = user
+      state.user = user || {}
     },
     setListTasks(state, payload) {
       //always use vue.set when adding deeply nested objects
@@ -51,16 +51,16 @@ export default new Vuex.Store({
     setActiveLists(state, activeLists) {
       state.activeLists = activeLists
     },
-    setComments(state, commentData){
-      Vue.set(state.comments, commentData.listId, commentData.taskId, commentData.comments)
+    setComments(state, commentData) {
+      Vue.set(state.comments, commentData.taskId, commentData.comments)
     }
   },
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
   actions: {
-    login({commit, dispatch}, user) {
+    login({ commit, dispatch }, user) {
       auth.post('login', user)
         .then(res => {
-          console.log(res)
+          //console.log(res)
           commit('setUser', res.data.data)// state.user = res.data.data || {}///??
           router.push('/boards')
         })
@@ -68,10 +68,10 @@ export default new Vuex.Store({
       //needs to authenticate whether this person is legit and then if not reroute to register, 
       // or invalid username or password
     },
-    register({commit, dispatch}, user) {
+    register({ commit, dispatch }, user) {
       auth.post('register', user)
         .then(res => {
-          console.log(res)
+          //console.log(res)
           if (res.data.error) {
             return handleError(res.data.error)
           }
@@ -80,47 +80,54 @@ export default new Vuex.Store({
         })
         .catch(handleError)
     },
-    getAuth({commit, dispatch}) {
+    getAuth({ commit, dispatch }) {
       auth('authenticate')
         .then(res => {
           commit('setUser', res.data.data)// state.user = res.data.data || {}///??
-          router.push('/boards')
+          if (res.data.data) {
+            router.push('/boards')
+          } else {
+            router.push('/')
+          }
         })
         .catch((err => {
         }))
     },
+    logout(user) {
+      auth.delete('logout')
+    },
     clearError() {
       state.error = {}
     },
-    getBoards({commit, dispatch}) {
-      api('boards')//boards or user boards?
+    getBoards({ commit, dispatch }) {
+      api('boards')//***Change this from boards to userboards when all the wire up is done, and it will make sure the person logged in gets only their boards. 
         .then(res => {
           commit('setBoards', res.data.data)//was state.board = res.data.data
         })
         .catch(handleError)
     },
-    getBoard({commit, dispatch}, id) {
+    getBoard({ commit, dispatch }, id) {
       api('boards/' + id.boardId)
         .then(res => {
           commit('setActiveBoard', res.data.data)//was state.activeBoard = res.data.data
         })
         .catch(handleError)
     },
-    createBoard({commit, dispatch}, board) {
+    createBoard({ commit, dispatch }, board) {
       api.post('boards/', board) ///do we need the / after boards?
         .then(res => {
           dispatch('getBoards') //was this.getBoards()
         })
         .catch(handleError)
     },
-    removeBoard({commit, dispatch}, board) {
+    removeBoard({ commit, dispatch }, board) {
       api.delete('boards/' + board._id)
         .then(res => {
           dispatch('getBoards')///was this.getBoards()
         })
         .catch(handleError)
     },
-    getLists({commit, dispatch}, id) {
+    getLists({ commit, dispatch }, id) {
       // state.activeLists = []
       api('boards/' + id.boardId + '/lists')
         .then(res => {
@@ -128,7 +135,7 @@ export default new Vuex.Store({
         })
         .catch(handleError)
     },
-    createList({commit, dispatch}, list) {
+    createList({ commit, dispatch }, list) {
       api.post('lists/', list)
         .then(res => {
           debugger
@@ -136,56 +143,59 @@ export default new Vuex.Store({
         })
         .catch(handleError)
     },
-    removeList({commit, dispatch}, list) {
+    removeList({ commit, dispatch }, list) {
       api.delete('lists/' + list._id)
         .then(res => {
-          dispatch('getLists') //was this.getLists()
+          dispatch('getLists', list) //was this.getLists()
         })
         .catch(handleError)
     },
-    getTasks({commit, dispatch}, data) {//is this second id necessary?
+    getTasks({ commit, dispatch }, data) {//is this second id necessary?
       //state.activeTasks = [] //this might need to be an array, but I think it needs to be                                       an obj...like it is in the state...the state definately                                             needs to be an obj b/c it needs to stay with the parent                                            list...., also the two ids being passed in are the board                                          and list ids...
       api('boards/' + data.boardId + '/lists/' + data.listId + '/tasks')
         .then(res => {
-          console.log(data.listId)
+          //console.log(data.listId)
 
-          var payload = {listId: data.listId, tasks: res.data.data}
-          debugger
+          var payload = { listId: data.listId, tasks: res.data.data }
+
           commit('setListTasks', payload)// res.data.data.forEach(task=>{
           //   state.activeTasks.push(task)
           // })
         })
         .catch(handleError)
     },
-    createTask({commit, dispatch}, task) {
+    createTask({ commit, dispatch }, task) {
       api.post('tasks/', task)
         .then(res => {
-          
+
           dispatch('getTasks', task)//was this.getTasks(task.listId)
         })
         .catch(handleError)
     },
-    removeTask({commit, dispatch}, task) {
+    removeTask({ commit, dispatch }, task) {
       api.delete('tasks/' + task._id)
         .then(res => {
           dispatch('getTasks', task)//was this.getTasks()
         })
         .catch(handleError)
     },
-    createComment({commit, dispatch}, comment){
+    createComment({ commit, dispatch }, comment) {
       api.post('comments', comment)
-      .then(res => {
-        dispatch('getComments', comment)
-      })
-      .catch(handleError)
-    },
-    removeComment({commit, dispatch}, comment){
-      this.$store.dispatch('removeComment', comment)
-    },
-    getComments({commit, dispatch}, data) {
-      api('boards/' + data.boardId + '/lists/' + data.listId + '/tasks/' + data.taskId + '/comments')
         .then(res => {
-          commit('setComments', res.data.data)//state.activeLists = res.data.data
+          dispatch('getComments', comment)
+        })
+        .catch(handleError)
+    },
+    removeComment({ commit, dispatch }, comment) {
+      api.delete('comments/' + comment._id).then(() => {
+        dispatch('getComments', { boardId: comment.boardId, taskId: comment.taskId, listId: comment.listId })
+      })
+    },
+    getComments({ commit, dispatch }, task) {
+      api('boards/' + task.boardId + '/lists/' + task.listId + '/tasks/' + task.taskId + '/comments')
+        .then(res => {
+          var commentData = { taskId: task.taskId, comments: res.data.data }
+          commit('setComments', commentData)//state.activeLists = res.data.data
         })
         .catch(handleError)
     },

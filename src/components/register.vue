@@ -1,6 +1,15 @@
 <template>
   <div class="register">
     <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1">
+        <img src="http://i44.photobucket.com/albums/f3/suhmantha/bberrylogo%20copy_zpsu6amhbml.png" alt="bBerry">
+      </div>
+      <div class="col-md-9"></div>
+      <div class="col-md-2">
+        <button class="button topmargin" @click=""><router-link :to="'/'">return to login</router-link></button>
+      </div>
+      </div>
       <div class="row"></div>
       <div class="row">
         <div class="col-md-3"></div>
@@ -15,7 +24,7 @@
         </div>
         <div class="col-md-3"></div>
       </div>
-      <div class="row"></div>
+      <div class="row bottom"></div>
     </div>
 
   </div>
@@ -45,7 +54,17 @@ export default {
 .login{
   background: #5989cc
 }
+img{
+  max-height: 35px;
+  margin-top: 10px
+}
+.topmargin{
+  margin-top: 10px
+}
 
+.bottom{
+  min-height: 800px
+}
 
 
 </style>

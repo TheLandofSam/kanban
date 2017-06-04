@@ -1,12 +1,12 @@
 <template>
   <div class="task">
-    {{task.name}}<button @click="removeTask(task)"> - </button>
+    {{task.name}}   <a @click="removeTask"><i class="glyphicon glyphicon-trash"></i></a>
 
-    <div class="well">
+    <div class="card">
     <Comment class="well" v-for="comment in comments" :comment="comment"></Comment>
       <div>
           <form @submit.prevent="createComment">
-                <input type="text" v-model="name" required placeholder="Comment...">
+                <input type="text" v-model="name" required placeholder="add a comment...">
                 <button type="submit">+</button>
           </form>
         </div>
@@ -48,8 +48,8 @@ export default {
     }
   },
   methods:{
-    removeTask(task) {
-      this.$store.dispatch('removeTask', task)
+    removeTask() {
+      this.$store.dispatch('removeTask', this.task)
       },
     createComment(){
       this.$store.dispatch('createComment', {
@@ -68,4 +68,7 @@ export default {
 
 <style scoped>
 
+.well{
+  background: #ffffff;
+}
 </style>

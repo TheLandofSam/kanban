@@ -2,13 +2,13 @@
   <div class="list">
     
           <div class="well">
-            {{list.name}}<a @click="removeList(list)">     x</a>
+            {{list.name}}      <a @click="removeList(list)"><i class="glyphicon glyphicon-trash"></i></a>
             <Task class="well" v-for="task in tasks" :task="task"></Task>
             <!--"in tasks" will actualy be something like tasks[list.id], so it only pulls the tasks associated with that specific board -->
           
             <div>
               <form @submit.prevent="createTask">
-                <input type="text" v-model="name" required placeholder="task name">
+                <input type="text" v-model="name" required placeholder="add a task...">
                 <button type="submit">+</button>
                 
                 
@@ -53,7 +53,10 @@ import Task from './task'
             listId: this.list._id
           })
           this.name = ''
-        }
+        },
+        removeList(list) {
+        this.$store.dispatch('removeList', list)
+      }
         
       }
     }
@@ -62,6 +65,10 @@ import Task from './task'
 </script>
 
 <style scoped>
+
+.well{
+  background: #5989cc
+}
 
 </style>
 
