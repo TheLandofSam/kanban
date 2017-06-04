@@ -93,8 +93,11 @@ export default new Vuex.Store({
         .catch((err => {
         }))
     },
-    logout(user) {
-      auth.delete('logout')
+    logout({commit, dispatch}, user) {
+      auth.delete('logout', user)
+      .then(res => {
+        router.push('/')
+      }).catch(handleError)
     },
     clearError() {
       state.error = {}

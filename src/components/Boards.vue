@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-10"></div>
       <div class="col-md-1">
-        <button class="button logout" @click="logout">logout</button>
+        <button class="button logout" @click="logout(user)">logout</button>
       </div>
     </div>
     <div class="row setsize">
@@ -87,7 +87,7 @@ export default {
       this.boardForm = false
     },
     logout(user) {
-      auth.delete('logout')
+      this.$store.dispatch('logout', this.user)
     },
     removeBoard(board){
       this.$store.dispatch('removeBoard', board)
