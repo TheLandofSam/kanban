@@ -1,11 +1,13 @@
 <template>
-  <div class="list">
+  <div class="list" droppable="true" v-on:drop.capture="createTasks" ondragover="event.preventDefault()">
     
           <div class="well">
             {{list.name}}      <a @click="removeList(list)"><i class="glyphicon glyphicon-trash"></i></a>
-            <Task class="well" v-for="task in tasks" :task="task"></Task>
-            <!--"in tasks" will actualy be something like tasks[list.id], so it only pulls the tasks associated with that specific board -->
-          
+            <Task class="well tasks" v-for="(task, index) in this.tasks" :task="task" :task-index="index" :key="index" :id="index" dragable="true" v-on:dragstart.capture="moving">
+              <!--<Task :task="task" :task-index="index"></Task>-->
+              <!--"in tasks" will actualy be something like tasks[list.id], so it only pulls the tasks associated with that specific board
+              <div v-on:dragend="moveTask"></div>-->
+            </Task>
             <div>
               <form @submit.prevent="createTask">
                 <input type="text" v-model="name" required placeholder="add a task...">
@@ -22,11 +24,14 @@
 
 <script>
 import Task from './task'
+import draggable from 'vuedraggable'
   export default {
     name: 'list',
     data(){
       return {
-        name: ''
+        name: '',
+        //boardId: this.$store.state.activeBoard._id,
+        //listId: this.list._id
       }
     },
     mounted() {
@@ -56,6 +61,24 @@ import Task from './task'
         },
         removeList(list) {
         this.$store.dispatch('removeList', list)
+      },
+      moveTask(){
+        let index = this.tasks.indexOf(this.tasks)
+        this.tasks.splice(index, 1)
+        this$store.dispatch('moveTask', tasks)
+        console.log('we have lift-off')
+      },
+      moving(event){
+        var task = this.tasks[event.target.id]
+        event.dataTransfer.setData('text/javascript', JSON.stringify(task))
+        console.log('this is shifty')
+      },
+      createTasks(event){
+        debugger
+        var task = JSON.parse(event.dataTransfer.getData('text/javascript'))
+        task.listId = this.list._id
+        this.$store.dispatch('moveTasks', task)
+        console.log('it is alive!')
       }
         
       }
@@ -69,6 +92,8 @@ import Task from './task'
 .well{
   background: #5989cc
 }
-
+.tasks:hover{
+  background: red 
+}
 </style>
 

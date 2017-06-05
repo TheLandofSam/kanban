@@ -3,6 +3,7 @@ import router from '../router'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+
 Vue.use(Vuex)
 
 let api = axios.create({
@@ -23,7 +24,7 @@ let state = {
   activeTasks: {},
   error: {},
   user: {},
-  comments: []
+  comments: {}//this might need to be an object for drag-n-drop
 }
 
 let handleError = (state, err) => {//has to be mutation!
@@ -174,6 +175,13 @@ export default new Vuex.Store({
           dispatch('getTasks', task)//was this.getTasks(task.listId)
         })
         .catch(handleError)
+    },
+    moveTask({ commit, dispatch }, task) {
+      api.put('tasks/' + task._id, task)
+      .then(res =>{
+        dispatch('getTasks', {boardId: task.boardId, listId: task.listId})
+      })
+      .catch(handleError)
     },
     removeTask({ commit, dispatch }, task) {
       api.delete('tasks/' + task._id)

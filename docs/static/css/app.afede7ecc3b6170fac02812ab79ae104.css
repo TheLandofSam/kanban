@@ -1,0 +1,140 @@
+
+#app {
+  font-family: 'ubuntu', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2f415e;
+  /*margin-top: 20px;*/
+  background-color: #2f415e
+}
+
+.login[data-v-734e3687]{
+  background: #5989cc
+}
+img[data-v-734e3687]{
+  max-height: 35px;
+  margin-top: 10px
+}
+.topmargin[data-v-734e3687]{
+  margin-top: 10px
+}
+.bottom[data-v-734e3687]{
+  min-height: 800px
+}
+
+
+
+.login[data-v-3ea8ba35]{
+  background: #5989cc
+}
+.ubuntu[data-v-3ea8ba35]{
+  font-family: 'Ubuntu', sans-serif;
+  color: #ffe135;
+}
+.pacifico[data-v-3ea8ba35]{
+  font-family: 'Pacifico', cursive;
+  color: #bc2020;
+}
+img[data-v-3ea8ba35]{
+  max-height: 60px;
+}
+span[data-v-3ea8ba35]{
+  max-height: 20px;
+}
+.bottom[data-v-3ea8ba35]{
+  background-color: #2f415e;
+  min-height: 800px
+}
+.topborder[data-v-3ea8ba35]{
+  background-color: #2f415e;
+  min-height: 80px
+}
+.bumper[data-v-3ea8ba35]{
+  min-height: 40px
+}
+h4[data-v-3ea8ba35]{
+  color: #ffe135
+}
+
+
+.custom-error[data-v-30395534]{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background: red;
+  color: white;
+}
+
+li[data-v-3c639f5e]{
+  list-style-type: none
+}
+.boards[data-v-3c639f5e]{
+  background-color: #5989cc;
+  padding-left: 20%;
+  padding-right: 20%
+}
+.well[data-v-3c639f5e]{
+  max-width: 400px
+}
+.setsize[data-v-3c639f5e]{
+  min-height: 800px
+}
+.setcolor[data-v-3c639f5e]{
+  background-color: #2f415e;
+  min-height: 50px
+}
+img[data-v-3c639f5e]{
+  max-height: 35px;
+  margin-top: 10px
+}
+.logout[data-v-3c639f5e]{
+  margin-top: 20px
+}
+
+
+.boxA[data-v-865059dc] {
+  min-height: 200px
+}
+.boxB[data-v-865059dc] {
+  min-height: 60px
+}
+img[data-v-865059dc]{
+max-height: 35px;
+margin-top: 10px
+}
+.topline[data-v-865059dc]{
+min-height: 100px;
+max-height: 110px
+}
+h2[data-v-865059dc]{
+color: black
+}
+.bottom[data-v-865059dc]{
+  min-height: 800px
+}
+
+.well[data-v-f1f6edfc]{
+  background: #5989cc
+}
+.tasks[data-v-f1f6edfc]:hover{
+  background: red
+}
+
+.well[data-v-1e5d4269]{
+  background: #ffffff;
+}
+
+.comment[data-v-b54c1daa]{
+  background: #a5adba;
+}
+
+.well[data-v-ea4225bc]{
+  background: #5989cc
+}
+.tasks[data-v-ea4225bc]:hover{
+  background: red
+}
+
+/*# sourceMappingURL=app.afede7ecc3b6170fac02812ab79ae104.css.map*/
