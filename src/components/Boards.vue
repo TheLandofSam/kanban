@@ -114,7 +114,7 @@ li{
 }
 
 .setsize{
-  min-height: 800px
+  min-height: 1000px
 }
 
 .setcolor{

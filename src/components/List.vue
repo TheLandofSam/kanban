@@ -85,10 +85,11 @@ import draggable from 'vuedraggable'
 <style scoped>
 
 .well{
-  background: #5989cc
+  background: #5989cc;
+  border-color: #5989cc
 }
 .tasks:hover{
-  background: red 
+  background: #ffe135 
 }
 </style>
 

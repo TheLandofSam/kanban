@@ -75,5 +75,6 @@ export default {
 
 .well{
   background: #ffffff;
+  
 }
 </style>
