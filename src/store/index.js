@@ -22,6 +22,7 @@ let state = {
   activeBoard: {},
   activeLists: [],
   activeTasks: {},
+  moveTask: {},
   error: {},
   user: {},
   comments: {}//this might need to be an object for drag-n-drop
@@ -44,7 +45,7 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user || {}
     },
-    setListTasks(state, payload) {
+    setListTasks(state, payload) {//** */
       //always use vue.set when adding deeply nested objects
       Vue.set(state.activeTasks, payload.listId, payload.tasks)
       // state.activeTasks[payload.listId] = payload.tasks
@@ -52,8 +53,12 @@ export default new Vuex.Store({
     setActiveLists(state, activeLists) {
       state.activeLists = activeLists
     },
-    setComments(state, commentData) {
+    setComments(state, commentData) {//** */
       Vue.set(state.comments, commentData.taskId, commentData.comments)
+    },
+    removeTask(state, task){
+      var i = state.activeTasks[task.task.listId].indexOf(task.task)
+      state.activeTasks[task.task.listId].splice(i, 1)
     }
   },
   // ACTIONS ARE RESPONSIBLE FOR MANAGING ALL ASYNC REQUESTS
@@ -110,7 +115,7 @@ export default new Vuex.Store({
         })
         .catch(handleError)
     },
-    getBoard({ commit, dispatch }, id) {
+    getBoard({ commit, dispatch }, id) {//** */
       api('boards/' + id.boardId)
         .then(res => {
           commit('setActiveBoard', res.data.data)//was state.activeBoard = res.data.data
@@ -131,7 +136,7 @@ export default new Vuex.Store({
         })
         .catch(handleError)
     },
-    getLists({ commit, dispatch }, id) {
+    getLists({ commit, dispatch }, id) {//** */
       // state.activeLists = []
       api('boards/' + id.boardId + '/lists')
         .then(res => {
@@ -142,7 +147,7 @@ export default new Vuex.Store({
     createList({ commit, dispatch }, list) {
       api.post('lists/', list)
         .then(res => {
-          debugger
+          
           dispatch('getLists', list.boardId)//was this.getLists(list.boardId)
         })
         .catch(handleError)
@@ -176,10 +181,12 @@ export default new Vuex.Store({
         })
         .catch(handleError)
     },
-    moveTask({ commit, dispatch }, task) {
-      api.put('tasks/' + task._id, task)
+    moveTask({ commit, dispatch }, payload) {
+      commit('removeTask', payload)
+      payload.task.listId = payload.to
+      api.put('tasks/' + payload.task._id, payload.task)
       .then(res =>{
-        dispatch('getTasks', {boardId: task.boardId, listId: task.listId})
+        dispatch('getTasks', {boardId: payload.task.boardId, listId: payload.task.listId})
       })
       .catch(handleError)
     },

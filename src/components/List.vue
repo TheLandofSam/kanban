@@ -3,7 +3,7 @@
     
           <div class="well">
             {{list.name}}      <a @click="removeList(list)"><i class="glyphicon glyphicon-trash"></i></a>
-            <Task class="well tasks" v-for="(task, index) in this.tasks" :task="task" :task-index="index" :key="index" :id="index" dragable="true" v-on:dragstart.capture="moving">
+            <Task class="well tasks" v-for="(task, index) in tasks" :task="task" :task-index="index" :key="index" :id="index"><!--I put a colon on this so I can pass this down as data, the = is the value when it is being passed to a child component, props only work on components-->
               <!--<Task :task="task" :task-index="index"></Task>-->
               <!--"in tasks" will actualy be something like tasks[list.id], so it only pulls the tasks associated with that specific board
               <div v-on:dragend="moveTask"></div>-->
@@ -62,27 +62,22 @@ import draggable from 'vuedraggable'
         removeList(list) {
         this.$store.dispatch('removeList', list)
       },
-      moveTask(){
-        let index = this.tasks.indexOf(this.tasks)
-        this.tasks.splice(index, 1)
-        this$store.dispatch('moveTask', tasks)
-        console.log('we have lift-off')
-      },
-      moving(event){
-        var task = this.tasks[event.target.id]
-        event.dataTransfer.setData('text/javascript', JSON.stringify(task))
-        console.log('this is shifty')
-      },
+      // moveTask(task){
+      //   let index = this.tasks.indexOf(task)
+      //   this.tasks.splice(index, 1)
+      //   this.$store.dispatch('moveTask', tasks)
+      //   console.log('we have lift-off')
+      // },//this makes it appear that things are moving but it never moves in the database, that would be a server side change.
       createTasks(event){
-        debugger
+
         var task = JSON.parse(event.dataTransfer.getData('text/javascript'))
-        task.listId = this.list._id
-        this.$store.dispatch('moveTasks', task)
+        
+        this.$store.dispatch('moveTask', {task: task, to: this.list._id})
         console.log('it is alive!')
       }
         
       }
-    }
+    }//JSON.stringify puts into one long string which is less to send, JSON.parse pulls it back out, this would have to be done with data coming and going from the server but axios is doing it for us so we don't have to...
   
 
 </script>

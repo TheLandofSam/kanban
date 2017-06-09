@@ -105,7 +105,7 @@ li{
 
 .boards{
   background-color: #5989cc;
-  padding-left: 20%;
+  padding-left: 25%;
   padding-right: 20%
   
 }

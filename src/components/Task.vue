@@ -1,5 +1,5 @@
 <template>
-  <div class="task">
+  <div class="task" draggable="true" v-on:dragstart.capture="moving">
     {{task.name}}   <a @click="removeTask"><i class="glyphicon glyphicon-trash"></i></a>
 
     <div class="card">
@@ -38,7 +38,7 @@ export default {
       taskId: this.task._id
     })
   },
-  props:['task'],
+  props:['task', 'id'],
   components:{
     Comment,
   },
@@ -50,6 +50,11 @@ export default {
   methods:{
     removeTask() {
       this.$store.dispatch('removeTask', this.task)
+      },
+    moving(event){
+        console.log('this is shifty')
+        //var task = this.tasks[event.target.id]   this line no longer needed because this.task is passed through the prop task
+        event.dataTransfer.setData('text/javascript', JSON.stringify(this.task))
       },
     createComment(){
       this.$store.dispatch('createComment', {
