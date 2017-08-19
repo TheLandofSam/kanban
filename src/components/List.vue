@@ -26,7 +26,7 @@
 import Task from './task'
 import draggable from 'vuedraggable'
   export default {
-    name: 'list',
+    name: 'List',
     data(){
       return {
         name: '',

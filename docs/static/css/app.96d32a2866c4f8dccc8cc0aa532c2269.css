@@ -72,14 +72,14 @@ li[data-v-3c639f5e]{
 }
 .boards[data-v-3c639f5e]{
   background-color: #5989cc;
-  padding-left: 20%;
+  padding-left: 25%;
   padding-right: 20%
 }
 .well[data-v-3c639f5e]{
   max-width: 400px
 }
 .setsize[data-v-3c639f5e]{
-  min-height: 800px
+  min-height: 1000px
 }
 .setcolor[data-v-3c639f5e]{
   background-color: #2f415e;
@@ -116,10 +116,11 @@ color: black
 }
 
 .well[data-v-f1f6edfc]{
-  background: #5989cc
+  background: #5989cc;
+  border-color: #5989cc
 }
 .tasks[data-v-f1f6edfc]:hover{
-  background: red
+  background: #ffe135
 }
 
 .well[data-v-1e5d4269]{
@@ -131,10 +132,11 @@ color: black
 }
 
 .well[data-v-ea4225bc]{
-  background: #5989cc
+  background: #5989cc;
+  border-color: #5989cc
 }
 .tasks[data-v-ea4225bc]:hover{
-  background: red
+  background: #ffe135
 }
 
-/*# sourceMappingURL=app.afede7ecc3b6170fac02812ab79ae104.css.map*/
+/*# sourceMappingURL=app.96d32a2866c4f8dccc8cc0aa532c2269.css.map*/

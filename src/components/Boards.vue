@@ -48,7 +48,7 @@
 <script>
 import login from './login'
 export default {
-  name: 'boards',
+  name: 'Boards',
   data(){
     return{
       boardForm: false,

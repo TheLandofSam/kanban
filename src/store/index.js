@@ -9,7 +9,7 @@ Vue.use(Vuex)
 let api = axios.create({
   baseURL: 'https://youcankanban.herokuapp.com/api/',
   timeout: 2000,
-  withCredentials: true
+  withCredentials: true 
 })
 let auth = axios.create({
   baseURL: 'https://youcankanban.herokuapp.com/',

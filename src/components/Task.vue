@@ -21,7 +21,7 @@
 <script>
 import Comment from './comment'
 export default {
-  name: 'task',
+  name: 'Task',
   data(){
     return {
       name: '',

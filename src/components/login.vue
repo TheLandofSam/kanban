@@ -7,7 +7,7 @@
         <div class="col-md-8">
           <div class="row"></div>
           <div class="row">
-            <h1 class="pacifico">Welcome to</h1><h1 class="ubuntu">banana<img src="http://i44.photobucket.com/albums/f3/suhmantha/bananaBerry_zps9iycff8c.png?t=1495668108" alt="Berry"></h1>
+            <h1 class="pacifico">Welcome to</h1><h1 class="ubuntu">banana<img :src="logo" alt="Berry"></h1>
           </div>
           <div class="row">
           <form @submit.prevent="login">
@@ -37,11 +37,13 @@
 
 
 <script>
+import logo from '../assets/bananaBerry.png'
 export default {
-  name: 'login',
+  name: 'Login',
   data(){
     return {
-      user: {}
+      user: {},
+      logo
     }
   },
   computed:{},

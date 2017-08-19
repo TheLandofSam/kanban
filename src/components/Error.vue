@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'error',
+  name: 'Error',
   computed:{
     error(){
       return this.$store.state.error

@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'comment',
+  name: 'Comment',
   props: ['comment'],
   computed:{
     
