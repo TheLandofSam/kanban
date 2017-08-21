@@ -55,7 +55,7 @@ export default {
       boardForm: false,
       name: "",
       description: "",
-      collaborators: ""
+      collaborators: "",
       logo
     }
   },

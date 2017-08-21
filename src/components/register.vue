@@ -37,7 +37,7 @@ export default {
   name: 'Register',
   data(){
     return{
-      user: {}
+      user: {},
       logo
     }
   },
