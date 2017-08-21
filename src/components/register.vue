@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-1">
-        <img src="http://i44.photobucket.com/albums/f3/suhmantha/bberrylogo%20copy_zpsu6amhbml.png" alt="bBerry">
+        <img :src="logo" alt="bBerry">
       </div>
       <div class="col-md-9"></div>
       <div class="col-md-2">
@@ -32,11 +32,13 @@
 
 
 <script>
+import logo from '../assets/bberrylogo.png'
 export default {
   name: 'Register',
   data(){
     return{
       user: {}
+      logo
     }
   },
   computed:{},

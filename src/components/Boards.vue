@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row setcolor">
       <div class="col-md-1">
-        <img src="http://i44.photobucket.com/albums/f3/suhmantha/bberrylogo%20copy_zpsu6amhbml.png" alt="bBerry">
+        <img :src="logo" alt="bBerry">
       </div>
       <div class="col-md-10"></div>
       <div class="col-md-1">
@@ -47,6 +47,7 @@
 
 <script>
 import login from './login'
+import logo from '../assets/bberrylogo.png'
 export default {
   name: 'Boards',
   data(){
@@ -55,6 +56,7 @@ export default {
       name: "",
       description: "",
       collaborators: ""
+      logo
     }
   },
   mounted(){
